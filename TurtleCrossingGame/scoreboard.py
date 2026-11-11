@@ -1,4 +1,6 @@
 from turtle import Turtle
+from pathlib import Path
+
 FONT = ("Montserrat", 24, "normal")
 
 
@@ -11,9 +13,10 @@ class Scoreboard(Turtle):
         else:
             self.data_file = "color_high_score.txt"
 
-        with open(self.data_file) as data:
+        self.file_path = Path(__file__).parent / self.data_file
+        with open(self.file_path) as data:
             self.high_score = int(data.read())
-
+        
         self.level = 0
         self.hideturtle()
         self.penup()
@@ -24,7 +27,7 @@ class Scoreboard(Turtle):
         self.level += 1
         if self.level > self.high_score:
             self.high_score = self.level
-            with open(self.data_file, mode="w") as data:
+            with open(self.file_path, mode="w") as data:
                 data.write(str(self.high_score))
         self.clear()
         self.write(f"Level: {self.level}\nHigh Score: {self.high_score}", align="left", font=FONT)

@@ -1,6 +1,7 @@
 # Turtle Crossing Game
 
 A small 2D Python game where the player controls a turtle and must cross a road while avoiding moving cars.
+Use up and down arrow keys to move the turtle across the screan.
 
 ## Features
 
